@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="view" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar prefHeight="26.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+                  <MenuItem fx:id="nuevoMenuButton" mnemonicParsing="false" onAction="#actionNuevoMenuButton" text="Nuevo">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/new-icon-16x16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              <MenuItem fx:id="abrirMenuButton" mnemonicParsing="false" onAction="#actionAbrirMenuButton" text="Abrir">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/open-icon-16x16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="guardarMenuButton" mnemonicParsing="false" onAction="#actionGuardarMenuButton" text="Guardar como...">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/save-icon-16x16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="G" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="salirMenuButton" mnemonicParsing="false" onAction="#actionSalirMenuButton" text="Salir">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/exit-icon-16x16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.298" prefHeight="475.0" prefWidth="600.0">
+        <items>
+          <VBox minWidth="141.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <Label text="Contactos:" />
+                  <ListView fx:id="listView" prefHeight="422.0" prefWidth="141.0" VBox.vgrow="ALWAYS" />
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="150.0" spacing="5.0">
+                     <children>
+                        <Button fx:id="addContactoButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionAddContactoButton" prefWidth="65.0">
+                           <graphic>
+                              <ImageView fitHeight="18.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/plus-icon-16x16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="eliminarContactoButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#actionEliminarContactoButton" prefWidth="65.0">
+                           <graphic>
+                              <ImageView fitHeight="18.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/close-icon-16x16.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </VBox>
+          <VBox fx:id="detallesContactosVbox">
+               <children>
+                  <HBox VBox.vgrow="ALWAYS">
+                     <HBox prefHeight="196.0" prefWidth="410.0" HBox.hgrow="ALWAYS">
+                        <children>
+                           <VBox prefHeight="191.0" prefWidth="287.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label text="Nombre:" />
+                                        <TextField fx:id="nombreTexto" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                 </HBox>
+                                 <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="189.0" spacing="10.0">
+                                    <children>
+                                        <Label text="Apellidos:" />
+                                        <TextField fx:id="apellidosTexto" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                 </HBox>
+                                 <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="357.0">
+                                    <children>
+                                        <Label prefHeight="17.0" prefWidth="142.0" text="Fecha de nacimiento:" />
+                                       <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="197.0" HBox.hgrow="ALWAYS">
+                                          <children>
+                                              <DatePicker fx:id="fechaDatePicker" maxWidth="-Infinity" HBox.hgrow="ALWAYS" />
+                                          </children>
+                                       </HBox>
+                                    </children>
+                                 </HBox>
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                      <VBox alignment="TOP_RIGHT">
+                         <ImageView fx:id="contactoImagen" fitHeight="170.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" />
+                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="112.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                            <children>
+                               <Button fx:id="buscarButton" mnemonicParsing="false" onAction="#actionBuscarButton" prefWidth="40.0">
+                                  <graphic>
+                                     <ImageView fitHeight="18.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                           <Image url="@../images/search-icon-16x16.png" />
+                                        </image>
+                                     </ImageView>
+                                  </graphic>
+                               </Button>
+                               <Button fx:id="eliminarFotoButton" mnemonicParsing="false" onAction="#actionEliminarFotoButton" prefWidth="40.0">
+                                  <graphic>
+                                     <ImageView fitHeight="18.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                           <Image url="@../images/close-icon-16x16.png" />
+                                        </image>
+                                     </ImageView>
+                                  </graphic>
+                               </Button>
+                            </children>
+                         </HBox>
+                      </VBox>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <Label text="Teléfonos:" />
+                  <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="numeroColumn" prefWidth="220.80004578828812" text="Número" />
+                      <TableColumn fx:id="tipoColumn" minWidth="0.0" prefWidth="221.59999084472656" text="Tipo" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <HBox prefHeight="26.0" prefWidth="442.0" spacing="5.0">
+                     <children>
+                        <HBox spacing="110.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="volverButton" mnemonicParsing="false" onAction="#actionVolverButton" prefWidth="52.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/arrow-back-icon-16x16.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="addTelefonoButton" mnemonicParsing="false" onAction="#actionAddTelefonoButton" prefWidth="52.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/plus-icon-16x16.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" spacing="110.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="eliminarTelefonoButton" mnemonicParsing="false" onAction="#actionEliminarTelefonoButton" prefWidth="52.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/close-icon-16x16.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="siguienteButton" mnemonicParsing="false" onAction="#actionSiguienteButton" prefWidth="52.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/arrow-next-icon-16x16.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
